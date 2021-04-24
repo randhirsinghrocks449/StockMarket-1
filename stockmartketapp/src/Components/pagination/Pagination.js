@@ -6,7 +6,7 @@ const Pagination = ({ userPerPage, onPaginationChange, total }) => {
     useEffect(() => {
 
         const pagesVisited = userPerPage * pageNumber;
-        onPaginationChange(pagesVisited, pagesVisited + userPerPage)
+        onPaginationChange(pagesVisited -userPerPage, pagesVisited )
 
     }, [pageNumber])
 

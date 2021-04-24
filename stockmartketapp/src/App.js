@@ -11,7 +11,6 @@ import "bootstrap/dist/css/bootstrap.min.css"
 const App = () => {
   const [datas, setDatas] = useState([])
   const [viewData, setViewData] = useState([]);
-  const [view, setView] = useState(false);
 
 
   useEffect(() => {
@@ -45,6 +44,7 @@ const App = () => {
     loadStockData();
 
   }
+  
   async function removeData(dataitem) {
     const data = {
       _id: dataitem._id
@@ -60,8 +60,8 @@ const App = () => {
         <div className="container mb-5 pb-5">
           <Card />
           <Switch>
-            <Route exact path="/" component={() => <Home datas={datas} view={view} viewData={viewData} addStockData={addStock} />} />
-            <Route exact path="/home" component={() => <Home datas={datas} view={view} viewData={viewData} addStockData={addStock} />} />
+            <Route exact path="/" component={() => <Home datas={datas}  viewData={viewData} addStockData={addStock} />} />
+            <Route exact path="/home" component={() => <Home datas={datas}  viewData={viewData} addStockData={addStock} />} />
             <Route exact path="/view" component={() => <Data deletebutton={removeData} viewData={viewData} />} />
           </Switch>
         </div>

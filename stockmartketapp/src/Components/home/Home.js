@@ -6,8 +6,8 @@ import { NavLink } from 'react-router-dom';
 
 const Home = (props) => {
 
-  const { datas, viewData, view } = props;
-  const [userPerPage, setuserPerPage] = useState(5)
+  const { datas, viewData } = props;
+  const userPerPage = 5;
   const [search, setSearch] = useState("")
   const [dataitem, setDataitem] = useState([]);
 
@@ -78,7 +78,6 @@ const Home = (props) => {
 
             <td>{stockdata.current_price}</td>
           </tr>
-
 
         })
         }
