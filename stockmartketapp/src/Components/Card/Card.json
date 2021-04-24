@@ -1,0 +1,17 @@
+[
+    {
+        "name": "GOOGL",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/768px-Google_%22G%22_Logo.svg.png",
+        "usd": "1515 USD"
+    },
+    {
+        "name": "FB",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Facebook_logo_36x36.svg/1024px-Facebook_logo_36x36.svg.png",
+        "usd": "266 USD"
+    },
+    {
+        "name": "AMZN",
+        "logo": "https://cdn.worldvectorlogo.com/logos/amazon-icon-1.svg",
+        "usd": "3116 USD"
+    }
+]
