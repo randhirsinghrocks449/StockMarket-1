@@ -30,11 +30,12 @@ const Pagination = ({ userPerPage, onPaginationChange, total }) => {
         }
     }
 
+
     return (
         <div className="d-flex justify-content-end px-5 align-items-center pagination_styling">
             <span>Page-{pageNumber}</span>
-            <button className="mx-2 btn" onClick={() => onButtonClick("prev")}><i className="fa fa-less-than"></i> </button>
-            <button className="mx-2 btn" onClick={() => onButtonClick("next")}><i className="fa fa-greater-than"></i></button>
+            <button className="npbtn" style={{border:"none",fontWeight:"bold",fontSize:"1.5rem",background:"transparent",cursor:"pointer",padding:"0px 12px"}}onClick={() => onButtonClick("prev")}>&lt;</button>
+            <button className="npbtn" style={{border:"none",fontWeight:"bold",fontSize:"1.5rem",background:"transparent",cursor:"pointer",padding:"0px 12px"}} onClick={() => onButtonClick("next")}>&gt;</button>
         </div>
     )
 }
