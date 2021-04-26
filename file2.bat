@@ -1,0 +1,2 @@
+cd stockmartketapp
+npm start
