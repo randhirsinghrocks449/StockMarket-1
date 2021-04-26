@@ -1,5 +1,5 @@
 import Home from "./Components/home/Home";
-import { BrowserRouter as Router, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import Navbar from './Components/navbar/Navbar';
 import Card from "./Components/Card/Card";
@@ -11,18 +11,29 @@ import "bootstrap/dist/css/bootstrap.min.css"
 const App = () => {
   const [datas, setDatas] = useState([])
   const [viewData, setViewData] = useState([]);
+  const [dataitem, setDataitem] = useState([]);
 
 
   useEffect(() => {
-    async function dataLoad() {
 
+    
+    async function dataLoad() {
       const response = await axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=16parkline=false')
-      console.log(response.data);
       setDatas(response.data);
     }
+
+    var temp = [];
+    viewData.map(item =>
+      temp.push(item.name)
+    )
+
+    setDataitem(temp);
+
     dataLoad();
     loadStockData();
-  }, [])
+
+  }, [viewData]);
+
 
   async function loadStockData() {
     const result = await axios.get('/getStocklist')
@@ -30,8 +41,7 @@ const App = () => {
 
   }
 
-  function addStock(stockdata, event) {
-    const containData = stockdata;
+  function addStock(stockdata) {
     const addStockData = {
       name: stockdata.name,
       symbol: stockdata.symbol,
@@ -40,17 +50,15 @@ const App = () => {
       isPurchased: false
     }
     axios.post('/savestock', addStockData);
-
-    loadStockData();
-
+  
   }
   
-  async function removeData(dataitem) {
+   function removeData(dataitem) {
     const data = {
       _id: dataitem._id
     };
-    const result = await axios.delete("/removeStock", { data })
-    loadStockData();
+    axios.delete("/removeStock", { data })
+
   }
 
   return (
@@ -60,9 +68,9 @@ const App = () => {
         <div className="container mb-5 pb-5">
           <Card />
           <Switch>
-            <Route exact path="/" component={() => <Home datas={datas}  viewData={viewData} addStockData={addStock} />} />
-            <Route exact path="/home" component={() => <Home datas={datas}  viewData={viewData} addStockData={addStock} />} />
-            <Route exact path="/view" component={() => <Data deletebutton={removeData} viewData={viewData} />} />
+            <Route exact path="/" ><Home datas={datas}  dataitem={dataitem} addStockData={addStock}/></Route> 
+            <Route exact path="/home" ><Home datas={datas} dataitem={dataitem}  addStockData={addStock} /></Route> 
+            <Route exact path="/view"><Data deletebutton={removeData} viewData={viewData}/></Route>
           </Switch>
         </div>
       </Router>
@@ -72,4 +80,3 @@ const App = () => {
 }
 
 export default App
-

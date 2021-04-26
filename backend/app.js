@@ -20,10 +20,6 @@ const Schema = new mongoose.Schema({
     market_cap: {
         type: String
     },
-    isPurchased: {
-        type: Boolean,
-        default: false
-    }
 }, { versionKey: false })
 
 const StockDetail = mongoose.model('StockDetail', Schema);
@@ -36,7 +32,6 @@ app.post("/savestock", (req, res) => {
         symbol: req.body.symbol,
         current_price: req.body.current_price,
         market_cap: req.body.market_cap,
-        isPurchased: req.body.isPurchased,
     })
 
     addData.save().then((result) => {

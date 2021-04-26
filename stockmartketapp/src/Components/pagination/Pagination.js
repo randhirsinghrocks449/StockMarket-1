@@ -8,11 +8,12 @@ const Pagination = ({ userPerPage, onPaginationChange, total }) => {
         const pagesVisited = userPerPage * pageNumber;
         onPaginationChange(pagesVisited -userPerPage, pagesVisited )
 
-    }, [pageNumber])
+    }, [pageNumber,userPerPage,onPaginationChange])
 
     function onButtonClick(type) {
+
         if (type === "prev") {
-            if (pageNumber === 1) {
+            if (pageNumber === 1) { 
 
                 setpageNumber(1)
             }

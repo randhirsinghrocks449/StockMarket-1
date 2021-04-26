@@ -10,7 +10,6 @@ const styles = {
         marginBottom: "40px"
     },
     card: {
-        border: "1px solid black",
         width: "28%",
         backgroundColor: "#f7f5fe",
         border: "1px solid #f7f5fe",
@@ -38,7 +37,7 @@ const Card = () => {
                                     <p>{data.name}</p>
                                 </div>
                                 <div className="col">
-                                    <img src={data.logo} alt="image"  style={styles.img}/>
+                                    <img src={data.logo} alt=""  style={styles.img}/>
                                 </div>
                             </div>
                             <div className="row pb-5" style={styles.container}>
